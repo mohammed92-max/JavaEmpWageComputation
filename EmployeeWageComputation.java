@@ -23,8 +23,9 @@ public class EmployeeWageComputation
 	   		partTimeEmpDailyWage = partTimeEmpDailyWage + partTimeHour * wagePerHour;
 			}
 
-			System.out.println("Part time employee daily wage is "
+			System.out.println("Part time employee daily wage till 20 days are "
                         +partTimeEmpDailyWage);
+
 			break;
 
 		case 2: for(int j=1;j<=20;j++)
@@ -32,7 +33,7 @@ public class EmployeeWageComputation
 			fullTimeDailyWage = fullTimeDailyWage + wagePerHour * totalHoursPerDay;
 			}
 			
-	                System.out.println("Daily wage is "+ fullTimeDailyWage);
+	                System.out.println("Total daily wage till 20 days is "+ fullTimeDailyWage);
 			break;
 
 		default: System.out.println("Invalid input");
