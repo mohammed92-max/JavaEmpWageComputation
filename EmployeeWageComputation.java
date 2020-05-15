@@ -1,49 +1,38 @@
-import java.util.Scanner;
-
 public class EmployeeWageComputation
 {
+	public static final int FULL_DAY_HOUR = 8;
+	public static final int WAGE_PER_HOUR = 20;
+	public static final int PART_TIME = 1;
+	public static final int FULL_TIME = 2;
+	
+	public static void callEmpWage()
+	{	
+		int dailyWage=0,totalWage=0,empHrs=0,totalEmpHrs=0,totalWorkDays=0;
+		
+		while(empHrs<=100 && totalWorkDays<=20)
+		{
+			totalWorkDays++;
+			int checkEmp = (int)Math.floor(Math.random()*10) % 3;																	
+			switch(checkEmp)
+	        {
+	        	case PART_TIME:
+	         			empHrs=4;
+	                 	break;
+	            case FULL_TIME:
+	                    empHrs=8;
+	                 	break;
+	            default:
+	                 	empHrs=0;
+	        }
+			dailyWage = empHrs * WAGE_PER_HOUR;
+			totalWage = totalWage + dailyWage;
+			totalEmpHrs = totalEmpHrs + empHrs; 
+		}	
+		System.out.println("Total Wage of an employee for 20 days is "+totalWage);
+	}
+	
 	public static void main (String[] args)
 	{
-		int wagePerHour=20,totalHoursPerDay=8,fullTimeDailyWage=0;
-		int partTimeEmp,partTimeWage,partTimeHour=8;
-		int partTimeEmpDailyWage=0;
-
-		System.out.println("1) Part time wage");
-		System.out.println("2) Full time wage");
-
-		Scanner scan = new Scanner(System.in);		
-		System.out.println("Enter choice ");
-		int choice = scan.nextInt();
-		
-		switch(choice)
-		{
-
-		case 1: for(int i=1;i<=20;i++)
-			{
-	   		partTimeEmpDailyWage = partTimeEmpDailyWage + partTimeHour * wagePerHour;
-			}
-
-			System.out.println("Part time employee daily wage till 20 days are "
-                        +partTimeEmpDailyWage);
-
-			break;
-
-		case 2: for(int j=1;j<=20;j++)
-			{
-			fullTimeDailyWage = fullTimeDailyWage + wagePerHour * totalHoursPerDay;
-			}
-			
-	                System.out.println("Total daily wage till 20 days is "+ fullTimeDailyWage);
-			break;
-
-		default: System.out.println("Invalid input");
-			 break;
-		}
+		callEmpWage();
 	}
 }
-
-
-
-
-
-
