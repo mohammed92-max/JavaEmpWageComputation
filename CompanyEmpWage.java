@@ -5,7 +5,8 @@ public class CompanyEmpWage
 	public final int numOfWorkingDays;
 	public final int maxHoursPerMonth;
 	public int totalEmpWage;
-	
+	// ok
+
 	public CompanyEmpWage(String company,int empRatePerHour,int numOfWorkingDays,int maxHoursPerMonth)
 	{
 		this.company = company;
