@@ -3,14 +3,30 @@ public class EmployeeWageComputation
 	public static final int PART_TIME = 1;
 	public static final int FULL_TIME = 2;
 	
-	public static void callEmpWage(String company,int wagePerHour,int totalWorkDays,int empMaxHrs)
+	private final String company;
+	private final int empRatePerHour;
+	private final int numOfWorkingDays;
+	private final int maxHoursPerMonth;
+	private int totalEmpWage;
+	
+	public EmployeeWageComputationUC9(String company,int empRatePerHour,int numOfWorkingDays,int maxHoursPerMonth)
+	{
+		this.company = company;
+		this.empRatePerHour = empRatePerHour;
+		this.numOfWorkingDays = numOfWorkingDays;
+		this.maxHoursPerMonth = maxHoursPerMonth;
+	}
+	
+	
+	public void computeEmpWage()
 	{	
-		int empHrs=0,days=1,dailyWage,totalWage=0,totalEmpHrs=0;
+		int empHrs=0,totalWorkingDays=0,totalEmpHrs=0;
 				
-		while(totalEmpHrs<=empMaxHrs && days<=totalWorkDays)
+		while(totalEmpHrs<=maxHoursPerMonth && totalWorkingDays < numOfWorkingDays)
 		{
-			days++;
+			totalWorkingDays++;
 			int checkEmp = (int)Math.floor(Math.random()*10) % 3;																	
+			
 			switch(checkEmp)
 	        {
 	        	case PART_TIME:
@@ -22,17 +38,27 @@ public class EmployeeWageComputation
 	            default:
 	                 	empHrs=0;
 	        }
-			dailyWage = empHrs * wagePerHour;
-			totalEmpHrs = totalEmpHrs + empHrs; 
-			totalWage = totalWage + dailyWage;
-		}	
-		System.out.println("Total Wage of an employee for "+empMaxHrs+ " hours is "+totalWage);
+			totalEmpHrs = totalEmpHrs + empHrs; 	
+			System.out.println("Day "+totalWorkingDays+ " Emp Hr "+empHrs);
+		}
+		totalEmpWage = totalEmpHrs * empRatePerHour;
+	}
+	
+	@Override
+	public String toString()
+	{
+		return "Total emp wage for company " +company+ " is "+totalEmpWage;
 	}
 	
 	public static void main (String[] args)
 	{
-		callEmpWage("Big Bazaar",10,20,160);
-		callEmpWage("D Mart",20,25,200);
-		callEmpWage("Wall Mart",30,30,150);
+		EmployeeWageComputationUC9 BigBazaar = new EmployeeWageComputationUC9("BigBazaar",20,2,10);
+		EmployeeWageComputationUC9 DMart = new EmployeeWageComputationUC9("DMart",20,2,10);
+		
+		BigBazaar.computeEmpWage();
+		System.out.println(BigBazaar);	
+		
+		DMart.computeEmpWage();
+		System.out.println(DMart);
 	}
 }
