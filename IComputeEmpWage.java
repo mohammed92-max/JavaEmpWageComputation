@@ -1,4 +1,4 @@
-package UC13;
+package UC14;
 public interface IComputeEmpWage 
 {
 	public void addCompanyEmpWage(String company,int empRatePerHour,int numOfWorkingDays,int maxHoursPerMonth);
